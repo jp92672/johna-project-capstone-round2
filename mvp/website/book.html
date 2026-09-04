@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Chleo Hair Studio - Booking</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-surface-variant": "#4d4540",
+                      "surface-variant": "#e4e2dd",
+                      "primary-container": "#2d2926",
+                      "inverse-on-surface": "#f2f1ec",
+                      "on-primary-fixed-variant": "#4b4642",
+                      "tertiary-fixed": "#ffdcc0",
+                      "surface-tint": "#635d5a",
+                      "outline-variant": "#cfc4bd",
+                      "secondary-fixed": "#ffdbcd",
+                      "inverse-surface": "#30312e",
+                      "surface-dim": "#dbdad5",
+                      "on-tertiary": "#ffffff",
+                      "inverse-primary": "#cdc5c0",
+                      "on-background": "#1b1c19",
+                      "on-tertiary-fixed-variant": "#5c4128",
+                      "on-primary-container": "#96908b",
+                      "on-secondary-fixed": "#360f00",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-container": "#77300b",
+                      "on-secondary-fixed-variant": "#78310c",
+                      "on-surface": "#1b1c19",
+                      "surface-container-lowest": "#ffffff",
+                      "error": "#ba1a1a",
+                      "primary-fixed-dim": "#cdc5c0",
+                      "secondary-container": "#ff996d",
+                      "on-tertiary-fixed": "#2b1703",
+                      "error-container": "#ffdad6",
+                      "on-primary-fixed": "#1e1b18",
+                      "on-error-container": "#93000a",
+                      "primary": "#181512",
+                      "tertiary-fixed-dim": "#e6bf9e",
+                      "secondary": "#974822",
+                      "secondary-fixed-dim": "#ffb597",
+                      "surface-bright": "#fbf9f4",
+                      "outline": "#7e756f",
+                      "on-tertiary-container": "#ad8b6d",
+                      "surface-container-low": "#f5f3ee",
+                      "background": "#fbf9f4",
+                      "surface-container": "#f0eee9",
+                      "on-error": "#ffffff",
+                      "surface-container-highest": "#e4e2dd",
+                      "primary-fixed": "#e9e1dc",
+                      "surface": "#fbf9f4",
+                      "tertiary": "#241101",
+                      "tertiary-container": "#3c250e",
+                      "surface-container-high": "#eae8e3",
+                      "on-primary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "24px",
+                      "gutter": "32px",
+                      "section-gap": "160px",
+                      "container-max": "1280px",
+                      "unit": "8px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "headline-sm": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Playfair Display"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg-mobile": [
+                              "48px",
+                              {
+                                      "lineHeight": "54px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-sm": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "26px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "80px",
+                              {
+                                      "lineHeight": "90px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "30px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "42px",
+                              {
+                                      "lineHeight": "52px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+        .material-symbols-outlined.fill {
+             font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Subtle fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+        
+        /* Hide scrollbar for chat */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+<!-- TopNavBar (Nav suppressed due to transactional nature of booking, but header retained) -->
+<header class="bg-surface/95 dark:bg-surface/95 backdrop-blur-md fixed top-0 w-full z-50 border-b border-primary/15 transition-all duration-300">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-6 max-w-container-max mx-auto">
+<a class="font-display-lg text-headline-sm tracking-tighter text-primary dark:text-inverse-primary" href="home.html">CHLEO</a>
+<!-- Nav links suppressed for booking flow -->
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow pt-[100px] pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+<div class="text-center mb-16 fade-in">
+<h1 class="font-headline-md text-headline-md text-primary mb-4">Book Your Appointment</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">How would you like to proceed? You can let our assistant guide you, use the booking form, or book directly on WhatsApp.</p>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+  <a class="inline-flex items-center font-label-caps text-label-caps text-primary uppercase tracking-widest text-underline-anim" href="https://wa.me/14155238886" target="_blank">
+                                WhatsApp agent <span class="material-symbols-outlined ml-2 text-sm" style="font-variation-settings: 'wght' 400;">open_in_new</span>
+</a></p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter items-start">
+<!-- Booking Assistant Widget -->
+<section class="bg-surface-container rounded-lg p-6 md:p-8 flex flex-col h-[600px] border border-primary/15 fade-in" style="animation-delay: 0.1s;">
+<div class="flex items-center gap-4 mb-6 pb-6 border-b border-primary/15">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined fill">auto_awesome</span>
+</div>
+<div>
+<h2 class="font-label-caps text-label-caps text-primary">Chleo Assistant</h2>
+<p class="text-on-surface-variant text-sm">Online • Ready to help</p>
+</div>
+</div>
+<div class="flex-grow overflow-y-auto no-scrollbar flex flex-col gap-4 pb-4" id="chat-log">
+<!-- Assistant Message -->
+<div class="flex gap-4 max-w-[85%]">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex-shrink-0 flex items-center justify-center text-on-primary-fixed mt-1">
+<span class="material-symbols-outlined text-sm">auto_awesome</span>
+</div>
+<div class="bg-surface rounded-lg rounded-tl-none p-4 shadow-sm border border-primary/5">
+<p class="text-on-surface">Hello! I can help you book your appointment. What are you looking to have done today?</p>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="mt-auto pt-4 border-t border-primary/15 relative">
+<input class="w-full bg-surface border-none rounded-DEFAULT px-4 py-3 text-on-surface focus:ring-1 focus:ring-primary focus:outline-none placeholder:text-on-surface-variant/50" id="chat-input" placeholder="Type your response..." type="text"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 transform text-primary hover:text-secondary transition-colors pt-4" id="chat-send">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+<p class="text-on-surface-variant text-xs mt-3">AI-powered; AI can make mistakes. By using AI Mode you agree to our <a class="underline hover:text-primary" href="#terms">Terms</a> and <a class="underline hover:text-primary" href="#privacy">Privacy Policy</a>.</p>
+</section>
+<!-- Simple Path (Step-by-Step) -->
+<section class="flex flex-col h-full fade-in" style="animation-delay: 0.2s;">
+<div class="bg-surface-bright rounded-lg p-6 md:p-8 border border-primary/15 h-full flex flex-col" id="direct-booking-form">
+<div class="flex items-center justify-between mb-8 pb-4 border-b border-primary/15">
+<h2 class="font-headline-sm text-headline-sm text-primary">Direct Booking</h2>
+<span class="font-label-caps text-label-caps text-on-surface-variant" id="step-label">Step 1 of 5</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-variant h-1 mb-8 rounded-full overflow-hidden">
+<div class="bg-primary h-full transition-all duration-300" id="progress-bar" style="width: 20%"></div>
+</div>
+<!-- Step 1: service -->
+<div class="flex-grow" id="direct-step-1">
+<h3 class="font-label-caps text-label-caps text-primary mb-6">1. Select Treatment</h3>
+<div class="grid grid-cols-1 gap-4">
+<label class="relative flex items-center p-4 border border-primary/15 rounded-DEFAULT cursor-pointer hover:bg-surface-container transition-colors group">
+<input class="peer sr-only direct-service" name="service_category" type="radio" value="Cut &amp; Style"/>
+<div class="w-5 h-5 rounded-full border border-outline peer-checked:border-primary peer-checked:border-[6px] mr-4 transition-all"></div>
+<div class="flex-grow">
+<span class="block font-body-md text-body-md text-primary group-hover:text-primary">Cut &amp; Style</span>
+<span class="block text-sm text-on-surface-variant">From €65 • 45-60 min</span>
+</div>
+</label>
+<label class="relative flex items-center p-4 border border-primary rounded-DEFAULT bg-surface-container cursor-pointer hover:bg-surface-container transition-colors group">
+<input checked="" class="peer sr-only direct-service" name="service_category" type="radio" value="Color &amp; Highlights"/>
+<div class="w-5 h-5 rounded-full border border-outline peer-checked:border-primary peer-checked:border-[6px] mr-4 transition-all"></div>
+<div class="flex-grow">
+<span class="block font-body-md text-body-md text-primary">Color &amp; Highlights</span>
+<span class="block text-sm text-on-surface-variant">From €120 • 90-180 min</span>
+</div>
+</label>
+<label class="relative flex items-center p-4 border border-primary/15 rounded-DEFAULT cursor-pointer hover:bg-surface-container transition-colors group">
+<input class="peer sr-only direct-service" name="service_category" type="radio" value="Treatments"/>
+<div class="w-5 h-5 rounded-full border border-outline peer-checked:border-primary peer-checked:border-[6px] mr-4 transition-all"></div>
+<div class="flex-grow">
+<span class="block font-body-md text-body-md text-primary group-hover:text-primary">Treatments</span>
+<span class="block text-sm text-on-surface-variant">From €45 • 30-45 min</span>
+</div>
+</label>
+</div>
+<div class="mt-8 flex justify-end">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-DEFAULT font-label-caps text-label-caps hover:bg-secondary transition-opacity duration-300 flex items-center gap-2" data-next="2" type="button">
+                            Next: Choose Date
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Step 2: date -->
+<div class="flex-grow hidden flex-col" id="direct-step-2">
+<h3 class="font-label-caps text-label-caps text-primary mb-2">2. Choose a Date</h3>
+<p class="text-sm text-on-surface-variant mb-6" id="direct-date-hint">Loading availability…</p>
+<div class="grid grid-cols-4 sm:grid-cols-7 gap-2" id="direct-date-grid"></div>
+<div class="mt-8 flex justify-between">
+<button class="border border-primary/20 text-primary px-6 py-3 rounded-DEFAULT font-label-caps text-label-caps hover:bg-surface-container transition-colors flex items-center gap-2" data-back="1" type="button">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+                            Back
+                        </button>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-DEFAULT font-label-caps text-label-caps hover:bg-secondary transition-opacity duration-300 flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed" data-next="3" disabled="" id="direct-date-next" type="button">
+                            Next: Choose Time
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Step 3: time -->
+<div class="flex-grow hidden flex-col" id="direct-step-3">
+<h3 class="font-label-caps text-label-caps text-primary mb-2">3. Choose a Time</h3>
+<p class="text-sm text-on-surface-variant mb-6" id="direct-time-hint">Available times</p>
+<div class="grid grid-cols-3 sm:grid-cols-4 gap-2 max-h-72 overflow-y-auto no-scrollbar" id="direct-time-grid"></div>
+<div class="mt-8 flex justify-between">
+<button class="border border-primary/20 text-primary px-6 py-3 rounded-DEFAULT font-label-caps text-label-caps hover:bg-surface-container transition-colors flex items-center gap-2" data-back="2" type="button">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+                            Back
+                        </button>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-DEFAULT font-label-caps text-label-caps hover:bg-secondary transition-opacity duration-300 flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed" data-next="4" disabled="" id="direct-time-next" type="button">
+                            Next: Your Details
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Step 4: contact details -->
+<div class="flex-grow hidden flex-col" id="direct-step-4">
+<h3 class="font-label-caps text-label-caps text-primary mb-6">4. Your Details</h3>
+<div class="flex flex-col gap-4">
+<input class="w-full bg-surface border border-primary/15 rounded-DEFAULT px-4 py-3 text-on-surface focus:ring-1 focus:ring-primary focus:outline-none" id="direct-name" placeholder="Full name" type="text"/>
+<input class="w-full bg-surface border border-primary/15 rounded-DEFAULT px-4 py-3 text-on-surface focus:ring-1 focus:ring-primary focus:outline-none" id="direct-email" placeholder="Email address" type="email"/>
+<div class="flex gap-2">
+<select aria-label="Country code" class="bg-surface border border-primary/15 rounded-DEFAULT pl-2 pr-1 py-3 text-on-surface focus:ring-1 focus:ring-primary focus:outline-none w-32" id="direct-phone-code">
+<option value="+49">🇩🇪 +49</option>
+<option value="+43">🇦🇹 +43</option>
+<option value="+41">🇨🇭 +41</option>
+<option value="+44">🇬🇧 +44</option>
+<option value="+33">🇫🇷 +33</option>
+<option value="+31">🇳🇱 +31</option>
+<option value="+1">🇺🇸 +1</option>
+</select>
+<input class="w-full bg-surface border border-primary/15 rounded-DEFAULT px-4 py-3 text-on-surface focus:ring-1 focus:ring-primary focus:outline-none" id="direct-phone" placeholder="Phone" required="" type="tel"/>
+</div>
+<textarea class="w-full bg-surface border border-primary/15 rounded-DEFAULT px-4 py-3 text-on-surface focus:ring-1 focus:ring-primary focus:outline-none resize-none" id="direct-notes" placeholder="Notes for your stylist (optional, e.g. color formula, allergies)" rows="2"></textarea>
+</div>
+<div class="mt-8 flex justify-between">
+<button class="border border-primary/20 text-primary px-6 py-3 rounded-DEFAULT font-label-caps text-label-caps hover:bg-surface-container transition-colors flex items-center gap-2" data-back="3" type="button">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+                            Back
+                        </button>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-DEFAULT font-label-caps text-label-caps hover:bg-secondary transition-opacity duration-300 flex items-center gap-2" data-next="5" id="direct-details-next" type="button">
+                            Next: Review
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Step 5: review + confirm -->
+<div class="flex-grow hidden flex-col" id="direct-step-5">
+<h3 class="font-label-caps text-label-caps text-primary mb-6">5. Review &amp; Confirm</h3>
+<dl class="flex flex-col gap-3 bg-surface-container rounded-DEFAULT p-5 border border-primary/10" id="direct-review-list">
+<div class="flex justify-between gap-4"><dt class="text-on-surface-variant text-sm">Treatment</dt><dd class="text-primary font-body-md text-right" id="review-service"></dd></div>
+<div class="flex justify-between gap-4"><dt class="text-on-surface-variant text-sm">Date &amp; Time</dt><dd class="text-primary font-body-md text-right" id="review-datetime"></dd></div>
+<div class="flex justify-between gap-4"><dt class="text-on-surface-variant text-sm">Name</dt><dd class="text-primary font-body-md text-right" id="review-name"></dd></div>
+<div class="flex justify-between gap-4"><dt class="text-on-surface-variant text-sm">Email</dt><dd class="text-primary font-body-md text-right" id="review-email"></dd></div>
+</dl>
+<p class="text-error text-sm mt-4 hidden" id="direct-error-msg"></p>
+<label class="flex items-start gap-3 mt-6 text-sm text-on-surface-variant" for="direct-consent-checkbox">
+<input class="mt-0.5" id="direct-consent-checkbox" type="checkbox"/>
+<span>I agree to the <a class="underline hover:text-primary" href="#terms">Terms</a> and <a class="underline hover:text-primary" href="#privacy">Privacy Policy</a>.</span>
+</label>
+<div class="mt-8 flex justify-between">
+<button class="border border-primary/20 text-primary px-6 py-3 rounded-DEFAULT font-label-caps text-label-caps hover:bg-surface-container transition-colors flex items-center gap-2" data-back="4" type="button">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+                            Back
+                        </button>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-DEFAULT font-label-caps text-label-caps hover:bg-secondary transition-opacity duration-300 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed" disabled="" id="direct-submit-btn" type="button">
+                            Confirm Booking
+                            <span class="material-symbols-outlined text-sm">check</span>
+</button>
+</div>
+</div>
+<!-- Persistent cancel link, shown below the Back/Next row on every step except the confirmation screen -->
+<div class="mt-4 text-right hidden" id="direct-cancel-wrap">
+<button class="font-label-caps text-label-caps text-on-surface-variant hover:text-error transition-colors" id="direct-cancel-btn" type="button">Cancel and start over</button>
+</div>
+<!-- Confirmation -->
+<div class="flex-grow hidden flex-col items-center justify-center text-center" id="direct-step-confirm">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">check_circle</span>
+<p class="font-body-lg text-body-lg text-primary mb-6" id="direct-confirm-text">Thanks! We've received your request.</p>
+<button class="border border-primary/20 text-primary px-6 py-3 rounded-DEFAULT font-label-caps text-label-caps hover:bg-surface-container transition-colors" id="direct-book-another-btn" type="button">Book Another Appointment</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer Shared Component -->
+<footer class="w-full py-section-gap bg-surface-container-low dark:bg-surface-container-lowest border-t border-primary/10">
+<div class="flex flex-col md:flex-row justify-between items-start gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-col gap-4">
+<span class="font-display-lg text-headline-sm text-primary dark:text-inverse-primary tracking-tighter">
+                    CHLEO
+                </span>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant max-w-sm">
+                    Independent premium hair studio in Berlin.
+                </p>
+                <p class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant">
+                    © 2026 Chleo Hair Studio Berlin. All rights reserved.
+                </p>
+</div>
+<div class="flex flex-col gap-6 md:items-end">
+<nav class="flex flex-wrap gap-6 md:justify-end">
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Terms of Service</a>
+</nav>
+</div>
+</div>
+</footer>
+<script>
+  // Chleo Hair Studio - Booking page logic
+  // Talks to the n8n "Capstone R2 - Use Case 1 Booking Assistant" workflow
+  // via the website webhook trigger (path: chleo-booking-chat).
+  const N8N_WEBHOOK_URL = "https://n8n.curiousjohnadams.com/webhook/chleo-booking-chat";
+
+  // Fresh session per page load (not persisted) so a refresh always starts a new conversation.
+  const CHAT_SESSION_ID = "web-" + Date.now() + "-" + Math.random().toString(36).slice(2, 8);
+  function getSessionId() {
+    return CHAT_SESSION_ID;
+  }
+
+  async function sendToAssistant(message) {
+    const res = await fetch(N8N_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ sessionId: getSessionId(), message })
+    });
+    if (!res.ok) throw new Error("Assistant request failed: " + res.status);
+    const data = await res.json();
+    return data.reply || "Sorry, I'm having trouble responding right now.";
+  }
+
+  // --- Chat widget ---
+  const chatLog = document.getElementById("chat-log");
+  const chatInput = document.getElementById("chat-input");
+  const chatSend = document.getElementById("chat-send");
+
+  function appendMessage(text, from) {
+    const wrap = document.createElement("div");
+    if (from === "user") {
+      wrap.className = "flex gap-4 max-w-[85%] self-end";
+      wrap.innerHTML = `
+        <div class="bg-primary text-on-primary rounded-lg rounded-tr-none p-4 shadow-sm">
+          <p></p>
+        </div>`;
+    } else {
+      wrap.className = "flex gap-4 max-w-[85%]";
+      wrap.innerHTML = `
+        <div class="w-8 h-8 rounded-full bg-primary-fixed flex-shrink-0 flex items-center justify-center text-on-primary-fixed mt-1">
+          <span class="material-symbols-outlined text-sm">auto_awesome</span>
+        </div>
+        <div class="bg-surface rounded-lg rounded-tl-none p-4 shadow-sm border border-primary/5">
+          <p class="text-on-surface"></p>
+        </div>`;
+    }
+    wrap.querySelector("p").textContent = text;
+    chatLog.appendChild(wrap);
+    chatLog.scrollTop = chatLog.scrollHeight;
+  }
+
+  function appendTyping() {
+    const wrap = document.createElement("div");
+    wrap.className = "flex gap-4 max-w-[85%]";
+    wrap.id = "typing-indicator";
+    wrap.innerHTML = `
+      <div class="w-8 h-8 rounded-full bg-primary-fixed flex-shrink-0 flex items-center justify-center text-on-primary-fixed mt-1">
+        <span class="material-symbols-outlined text-sm">auto_awesome</span>
+      </div>
+      <div class="bg-surface rounded-lg rounded-tl-none p-4 shadow-sm border border-primary/5">
+        <p class="text-on-surface-variant text-sm">Typing...</p>
+      </div>`;
+    chatLog.appendChild(wrap);
+    chatLog.scrollTop = chatLog.scrollHeight;
+  }
+
+  function removeTyping() {
+    const el = document.getElementById("typing-indicator");
+    if (el) el.remove();
+  }
+
+  async function handleSend() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+    appendMessage(text, "user");
+    chatInput.value = "";
+    chatInput.disabled = true;
+    appendTyping();
+    try {
+      const reply = await sendToAssistant(text);
+      removeTyping();
+      appendMessage(reply, "assistant");
+    } catch (err) {
+      removeTyping();
+      appendMessage("Sorry, something went wrong reaching the studio assistant. Please try again in a moment.", "assistant");
+      console.error(err);
+    } finally {
+      chatInput.disabled = false;
+      chatInput.focus();
+    }
+  }
+
+  chatSend.addEventListener("click", handleSend);
+  chatInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") handleSend();
+  });
+
+  // --- Direct booking (click-through) path ---
+  // Talks to the deterministic "Capstone R2 - Direct Booking API" n8n workflow
+  // (chleo-availability / chleo-direct-book) - no LLM involved, exact slots only.
+  const AVAILABILITY_URL = "https://n8n.curiousjohnadams.com/webhook/chleo-availability";
+  const DIRECT_BOOK_URL = "https://n8n.curiousjohnadams.com/webhook/chleo-direct-book";
+
+  const directSteps = {
+    1: document.getElementById("direct-step-1"),
+    2: document.getElementById("direct-step-2"),
+    3: document.getElementById("direct-step-3"),
+    4: document.getElementById("direct-step-4"),
+    5: document.getElementById("direct-step-5"),
+  };
+  const stepConfirm = document.getElementById("direct-step-confirm");
+  const stepLabel = document.getElementById("step-label");
+  const progressBar = document.getElementById("progress-bar");
+  const submitBtn = document.getElementById("direct-submit-btn");
+  const cancelBtn = document.getElementById("direct-cancel-btn");
+  const bookAnotherBtn = document.getElementById("direct-book-another-btn");
+  const dateGrid = document.getElementById("direct-date-grid");
+  const dateHint = document.getElementById("direct-date-hint");
+  const dateNextBtn = document.getElementById("direct-date-next");
+  const timeGrid = document.getElementById("direct-time-grid");
+  const timeHint = document.getElementById("direct-time-hint");
+  const timeNextBtn = document.getElementById("direct-time-next");
+  const errorMsg = document.getElementById("direct-error-msg");
+  const consentCheckbox = document.getElementById("direct-consent-checkbox");
+  consentCheckbox.addEventListener("change", () => {
+    submitBtn.disabled = !consentCheckbox.checked;
+  });
+
+  const TOTAL_STEPS = 5;
+  let currentStep = 1;
+  let availabilityDays = null; // cached response from chleo-availability
+  const selection = { service: null, date: null, weekday: null, time: null, iso: null };
+
+  function showStep(n) {
+    Object.entries(directSteps).forEach(([key, el]) => {
+      const isTarget = Number(key) === n;
+      el.classList.toggle("hidden", !isTarget);
+      el.classList.toggle("flex", isTarget && Number(key) !== 1);
+    });
+    stepConfirm.classList.add("hidden");
+    stepConfirm.classList.remove("flex");
+    currentStep = n;
+    stepLabel.textContent = `Step ${n} of ${TOTAL_STEPS}`;
+    progressBar.style.width = `${(n / TOTAL_STEPS) * 100}%`;
+    document.getElementById("direct-cancel-wrap").classList.toggle("hidden", n === 1);
+    if (n === 3) renderTimeGrid();
+    if (n === 5) renderReview();
+  }
+
+  function resetDirectFlow() {
+    selection.service = null;
+    selection.date = null;
+    selection.weekday = null;
+    selection.time = null;
+    selection.iso = null;
+    document.getElementById("direct-name").value = "";
+    document.getElementById("direct-email").value = "";
+    document.getElementById("direct-phone").value = "";
+    document.getElementById("direct-phone-code").value = "+49";
+    document.getElementById("direct-notes").value = "";
+    consentCheckbox.checked = false;
+    submitBtn.disabled = true;
+    dateNextBtn.disabled = true;
+    timeNextBtn.disabled = true;
+    errorMsg.classList.add("hidden");
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Confirm Booking <span class="material-symbols-outlined text-sm">check</span>';
+    document.getElementById("direct-cancel-wrap").classList.remove("hidden");
+    showStep(1);
+  }
+
+  cancelBtn.addEventListener("click", () => {
+    if (confirm("Cancel this booking and start over?")) resetDirectFlow();
+  });
+  bookAnotherBtn.addEventListener("click", resetDirectFlow);
+
+  document.querySelectorAll("[data-next]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const target = Number(btn.dataset.next);
+      if (target === 2) selection.service = document.querySelector(".direct-service:checked")?.value || "Cut & Style";
+      if (target === 3 && !selection.date) return; // guarded by disabled state too
+      if (target === 5) {
+        const name = document.getElementById("direct-name").value.trim();
+        const email = document.getElementById("direct-email").value.trim();
+        const phone = document.getElementById("direct-phone").value.trim();
+        if (!name || !email || !phone) {
+          alert("Please enter your name, email, and phone number so we can hold your slot.");
+          return;
+        }
+      }
+      showStep(target);
+      if (target === 2 && !availabilityDays) loadAvailability();
+    });
+  });
+
+  document.querySelectorAll("[data-back]").forEach((btn) => {
+    btn.addEventListener("click", () => showStep(Number(btn.dataset.back)));
+  });
+
+  async function loadAvailability() {
+    dateHint.textContent = "Loading availability…";
+    dateGrid.innerHTML = "";
+    try {
+      const res = await fetch(AVAILABILITY_URL);
+      if (!res.ok) throw new Error("Availability request failed: " + res.status);
+      const data = await res.json();
+      availabilityDays = data.days || [];
+      renderDateGrid();
+      dateHint.textContent = "Closed and fully booked days are greyed out.";
+    } catch (err) {
+      console.error(err);
+      dateHint.textContent = "Sorry, couldn't load availability. Please try again or use the chat assistant.";
+    }
+  }
+
+  function renderDateGrid() {
+    dateGrid.innerHTML = "";
+    availabilityDays.forEach((day) => {
+      const disabled = day.closed || day.full;
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.disabled = disabled;
+      const isSelected = selection.date === day.date;
+      btn.className = disabled
+        ? "flex flex-col items-center py-3 rounded-DEFAULT border border-primary/10 text-on-surface-variant/40 cursor-not-allowed"
+        : "flex flex-col items-center py-3 rounded-DEFAULT border transition-colors " +
+          (isSelected
+            ? "border-primary bg-primary text-on-primary"
+            : "border-primary/15 text-primary hover:bg-surface-container cursor-pointer");
+      const [, , dayNum] = day.date.split("-");
+      btn.innerHTML = `<span class="text-xs uppercase">${day.weekday.slice(0, 3)}</span><span class="font-body-md">${Number(dayNum)}</span>`;
+      if (!disabled) {
+        btn.addEventListener("click", () => {
+          selection.date = day.date;
+          selection.weekday = day.weekday;
+          selection.time = null;
+          selection.iso = null;
+          dateNextBtn.disabled = false;
+          renderDateGrid();
+        });
+      }
+      dateGrid.appendChild(btn);
+    });
+  }
+
+  function renderTimeGrid() {
+    timeGrid.innerHTML = "";
+    timeNextBtn.disabled = !selection.time;
+    const day = availabilityDays.find((d) => d.date === selection.date);
+    if (!day) return;
+    timeHint.textContent = `${selection.weekday}, ${selection.date} — pick a time`;
+    day.slots.forEach((slot) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      const isSelected = selection.time === slot.time;
+      btn.className = "py-2 rounded-DEFAULT border transition-colors font-body-md " +
+        (isSelected
+          ? "border-primary bg-primary text-on-primary"
+          : "border-primary/15 text-primary hover:bg-surface-container cursor-pointer");
+      btn.textContent = slot.time;
+      btn.addEventListener("click", () => {
+        selection.time = slot.time;
+        selection.iso = slot.iso;
+        timeNextBtn.disabled = false;
+        renderTimeGrid();
+      });
+      timeGrid.appendChild(btn);
+    });
+    if (day.slots.length === 0) {
+      timeGrid.innerHTML = '<p class="col-span-full text-sm text-on-surface-variant">No times left this day.</p>';
+    }
+  }
+
+  function renderReview() {
+    document.getElementById("review-service").textContent = selection.service || "—";
+    document.getElementById("review-datetime").textContent = selection.date
+      ? `${selection.weekday}, ${selection.date} at ${selection.time}`
+      : "—";
+    document.getElementById("review-name").textContent = document.getElementById("direct-name").value.trim();
+    document.getElementById("review-email").textContent = document.getElementById("direct-email").value.trim();
+  }
+
+  submitBtn.addEventListener("click", async () => {
+    if (!consentCheckbox.checked) return;
+    const name = document.getElementById("direct-name").value.trim();
+    const email = document.getElementById("direct-email").value.trim();
+    const phoneNumber = document.getElementById("direct-phone").value.trim();
+    const phoneCode = document.getElementById("direct-phone-code").value;
+    const phone = phoneNumber ? `${phoneCode} ${phoneNumber}` : "";
+    const notes = document.getElementById("direct-notes").value.trim();
+
+    errorMsg.classList.add("hidden");
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Booking…";
+    try {
+      const res = await fetch(DIRECT_BOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          service: selection.service,
+          name, email, phone, notes,
+          start_time: selection.iso,
+        }),
+      });
+      if (!res.ok) throw new Error("Booking request failed: " + res.status);
+      const data = await res.json();
+      showStep(5); // stays visually consistent then swap to confirm
+      directSteps[5].classList.add("hidden");
+      document.getElementById("direct-cancel-wrap").classList.add("hidden");
+      stepConfirm.classList.remove("hidden");
+      stepConfirm.classList.add("flex");
+      document.getElementById("direct-confirm-text").textContent =
+        `You're booked for ${selection.service} on ${selection.weekday}, ${selection.date} at ${selection.time}. A confirmation has been sent to ${email}.`;
+    } catch (err) {
+      console.error(err);
+      errorMsg.textContent = "Something went wrong confirming your booking. Please try again or use the chat assistant.";
+      errorMsg.classList.remove("hidden");
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Confirm Booking <span class="material-symbols-outlined text-sm">check</span>';
+    }
+  });
+</script>
+</body></html>

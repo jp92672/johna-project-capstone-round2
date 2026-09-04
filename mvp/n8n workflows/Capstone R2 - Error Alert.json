@@ -1,0 +1,129 @@
+{
+  "name": "Capstone R2 - Error Alert",
+  "id": "n2qpIdNehXFzbFTg",
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": true,
+    "binaryMode": "separate"
+  },
+  "meta": {
+    "instanceId": "chleo-hair-studio"
+  },
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "99d02074-5d74-4065-94a9-0b8108668131",
+      "name": "On Any Workflow Failure",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [112, 304]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.resend.com/emails",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "from", "value": "Chleo Alerts <noreply@mail.curiousjohnadams.com>" },
+            { "name": "to", "value": "dev-test@example.com" },
+            { "name": "subject", "value": "=Action needed: {{ $json.fields.Workflow }} failed" },
+            {
+              "name": "text",
+              "value": "=========================================\nFOR THE OWNER\n=========================================\nA client had a problem and needs your help.\n\nClient: {{ $json.fields['Client Contact'] }}\nWhat they wanted: {{ $json.fields['Client Message'] }}\nWhat went wrong: {{ $json.fields['Owner Summary'] }}\n\n>> Please contact this client directly to sort it out.\n>> Full record in Airtable: https://airtable.com/appE1hAG2NEl8YdkX/tbldVvRqZMKi1y7Eh/{{ $json.id }}\n\n\n=========================================\nFOR THE DEV\n=========================================\nWorkflow: {{ $json.fields.Workflow }}\nFailed node: {{ $json.fields['Failed Node'] }}\nError message: {{ $json.fields['Error Message'] }}\n\nn8n execution ID: {{ $json.fields['Execution ID'] }}\nn8n execution link: {{ $json.fields['Execution URL'] }}\nWhere to dig deeper: {{ $json.fields['Relevant Tool'] }}\n\nLogged at: {{ $json.fields['Logged At'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4ef7803e-d9bd-492b-9db1-21966eb710fe",
+      "name": "Alert Owner",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [744, 416]
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": { "__rl": true, "mode": "id", "value": "appE1hAG2NEl8YdkX" },
+        "table": { "__rl": true, "mode": "id", "value": "tbldVvRqZMKi1y7Eh" },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Workflow": "={{ $json.workflowName }}",
+            "Error Message": "={{ $json.errorMessage }}",
+            "Failed Node": "={{ $json.failedNode }}",
+            "Execution URL": "={{ $json.executionUrl }}",
+            "Logged At": "={{ $now.toISO() }}",
+            "Client Contact": "={{ $json.clientContact }}",
+            "Client Message": "={{ $json.clientMessage }}",
+            "Execution ID": "={{ $json.executionId }}",
+            "Owner Summary": "={{ $json.ownerSummary }}",
+            "Relevant Tool": "={{ $json.relevantTool }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "ae2a951d-ff70-4790-876f-5395194b69fc",
+      "name": "Log Error to Airtable",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.2,
+      "position": [500, 416]
+    },
+    {
+      "id": "ef6591bf-72f7-4d55-96ac-91e4f6e8315a",
+      "name": "Report Failure (Rich)",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.2,
+      "position": [112, 528],
+      "parameters": {
+        "inputSource": "workflowInputs",
+        "workflowInputs": {
+          "values": [
+            { "name": "workflowName", "type": "string" },
+            { "name": "errorMessage", "type": "string" },
+            { "name": "failedNode", "type": "string" },
+            { "name": "executionUrl", "type": "string" },
+            { "name": "executionId", "type": "string" },
+            { "name": "clientContact", "type": "string" },
+            { "name": "clientMessage", "type": "string" },
+            { "name": "ownerSummary", "type": "string" },
+            { "name": "relevantTool", "type": "string" }
+          ]
+        }
+      }
+    },
+    {
+      "id": "0277974f-a6b1-4b26-8696-09fa24220e84",
+      "name": "Normalize Passive Trigger",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [256, 304],
+      "parameters": {
+        "mode": "manual",
+        "assignments": {
+          "assignments": [
+            { "id": "a1", "name": "workflowName", "value": "={{ $json.workflow.name }}", "type": "string" },
+            { "id": "a2", "name": "errorMessage", "value": "={{ $json.execution.error.message }}", "type": "string" },
+            { "id": "a3", "name": "failedNode", "value": "={{ $json.execution.lastNodeExecuted }}", "type": "string" },
+            { "id": "a4", "name": "executionUrl", "value": "={{ $json.execution.url }}", "type": "string" },
+            { "id": "a7", "name": "executionId", "value": "={{ $json.execution.id }}", "type": "string" },
+            { "id": "a5", "name": "clientContact", "value": "Unknown — not available for this failure.", "type": "string" },
+            { "id": "a6", "name": "clientMessage", "value": "Not available — check the n8n execution link below.", "type": "string" },
+            { "id": "a8", "name": "ownerSummary", "value": "Something went wrong in the background and we don't yet have client details for this one — a developer needs to look at the execution link below.", "type": "string" },
+            { "id": "a9", "name": "relevantTool", "value": "n8n execution log (see link below) — start there to identify which client and external service were involved.", "type": "string" }
+          ]
+        }
+      }
+    }
+  ],
+  "connections": {
+    "On Any Workflow Failure": { "main": [[{ "node": "Normalize Passive Trigger", "type": "main", "index": 0 }]] },
+    "Normalize Passive Trigger": { "main": [[{ "node": "Log Error to Airtable", "type": "main", "index": 0 }]] },
+    "Report Failure (Rich)": { "main": [[{ "node": "Log Error to Airtable", "type": "main", "index": 0 }]] },
+    "Log Error to Airtable": { "main": [[{ "node": "Alert Owner", "type": "main", "index": 0 }]] }
+  }
+}
